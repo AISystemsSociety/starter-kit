@@ -23,8 +23,8 @@ The installer will:
 
 | Skill | What It Does |
 |-------|-------------|
-| **$100M Offer Builder** | Interactive prompt that interviews you about your business, then builds a complete cold-traffic offer using Hormozi, Brunson, Schwartz, and 3 other frameworks. Paste into Claude or ChatGPT. |
-| **Grand Slam Offer Architect** | Quick-reference guide for offer structure, guarantee design, pricing psychology, sales call scripts, and retainer design. |
+| **$100M Offer Builder** | Interactive prompt that interviews you about your business, then builds a complete cold-traffic offer using Hormozi, Brunson, Schwartz, and 3 other frameworks. Includes sales call scripts, retainer design, and disqualification criteria. Paste into Claude or ChatGPT. |
+| **YouTube Script Framework** | Plan any YouTube video using Hormozi's Proof/Promise/Path structure. Hook formulas, section breakdowns, thumbnail concepts, B-roll checklists. |
 | **Podcast Guest Research** | Deep-research framework for podcast guests. 10-question interview structure in 5 arcs, scoring system, gap analysis, off-air transition scripts. |
 | **Growth Plan Deck** | Instructions for building a 21-slide HTML pitch deck. Covers every slide's purpose and what to customize. |
 | **GitHub for Agencies** | Complete GitHub guide for non-technical service business owners. Setup, daily workflow, hosting, password protection. |

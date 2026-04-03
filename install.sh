@@ -122,11 +122,11 @@ echo -e "${GREEN}[1/5]${NC} Downloading skills..."
 # Download each skill file
 curl -sL "https://raw.githubusercontent.com/AISystemsSociety/100m-offer-builder/main/100m-offer-builder.md" \
   -o "$SKILLS_DIR/100m-offer-builder.md"
-echo "  → 100M Offer Builder"
+echo "  → 100M Offer Builder (includes Grand Slam Offer Architect)"
 
-curl -sL "https://raw.githubusercontent.com/AISystemsSociety/100m-offer-builder/main/grand-slam-offer-architect.md" \
-  -o "$SKILLS_DIR/grand-slam-offer-architect.md"
-echo "  → Grand Slam Offer Architect"
+curl -sL "https://raw.githubusercontent.com/AISystemsSociety/youtube-script-framework/main/youtube-script-framework.md" \
+  -o "$SKILLS_DIR/youtube-script-framework.md"
+echo "  → YouTube Script Framework"
 
 curl -sL "https://raw.githubusercontent.com/AISystemsSociety/podcast-guest-research/main/podcast-guest-research.md" \
   -o "$SKILLS_DIR/podcast-guest-research.md"
@@ -199,7 +199,7 @@ Load these skills by referencing them in your prompts or CLAUDE.md:
 | Skill | File | Use When |
 |-------|------|----------|
 | $100M Offer Builder | `~/.claude/skills/100m-offer-builder.md` | Building a new service offer from scratch |
-| Grand Slam Offer Architect | `~/.claude/skills/grand-slam-offer-architect.md` | Quick reference for offer structure, pricing, guarantees |
+| YouTube Script Framework | `~/.claude/skills/youtube-script-framework.md` | Planning a YouTube video with Proof/Promise/Path |
 | Podcast Guest Research | `~/.claude/skills/podcast-guest-research.md` | Prepping for a podcast guest interview |
 | Growth Plan Deck | `~/.claude/skills/growth-plan-deck.md` | Building a pitch deck for a prospect |
 | GitHub for Agencies | `~/.claude/skills/github-for-agencies.md` | Setting up repos, deploying, managing code |
