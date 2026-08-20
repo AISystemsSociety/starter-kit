@@ -142,13 +142,20 @@ echo -e "${GREEN}[2/5]${NC} Downloading templates..."
 TEMPLATES_DIR="$HOME/.claude/templates"
 mkdir -p "$TEMPLATES_DIR"
 
-curl -sL "https://raw.githubusercontent.com/AISystemsSociety/growth-plan-deck-template/main/growth-plan-template.html" \
-  -o "$TEMPLATES_DIR/growth-plan-template.html"
-echo "  → Growth Plan Deck Template (HTML)"
+# The growth plan deck is a folder now: the template, a build script, and the docs.
+# Cloning keeps build.py next to the template it expects, which curling file by file does not.
+DECK_DIR="$TEMPLATES_DIR/growth-plan-deck"
+if [ -d "$DECK_DIR/.git" ]; then
+  git -C "$DECK_DIR" pull --quiet --ff-only 2>/dev/null || true
+else
+  rm -rf "$DECK_DIR"
+  git clone --quiet --depth 1 \
+    https://github.com/AISystemsSociety/growth-plan-deck-template.git "$DECK_DIR"
+fi
+echo "  → Growth Plan Deck Template (20 slides, docs, build script)"
 
-curl -sL "https://raw.githubusercontent.com/AISystemsSociety/growth-plan-deck-template/main/growth-plan-deck-skill.md" \
-  -o "$SKILLS_DIR/growth-plan-deck.md"
-echo "  → Growth Plan Deck Skill (instructions)"
+cp "$DECK_DIR/SKILL.md" "$SKILLS_DIR/growth-plan-deck.md"
+echo "  → Growth Plan Deck Skill (guided build)"
 
 echo ""
 echo -e "${GREEN}[3/5]${NC} Installing Context Guardian..."
@@ -201,7 +208,7 @@ Load these skills by referencing them in your prompts or CLAUDE.md:
 | $100M Offer Builder | `~/.claude/skills/100m-offer-builder.md` | Building a new service offer from scratch |
 | YouTube Script Framework | `~/.claude/skills/youtube-script-framework.md` | Planning a YouTube video with Proof/Promise/Path |
 | Podcast Guest Research | `~/.claude/skills/podcast-guest-research.md` | Prepping for a podcast guest interview |
-| Growth Plan Deck | `~/.claude/skills/growth-plan-deck.md` | Building a pitch deck for a prospect |
+| Growth Plan Deck | `~/.claude/skills/growth-plan-deck.md` | Building a 20-slide growth plan deck for a prospect |
 | GitHub for Agencies | `~/.claude/skills/github-for-agencies.md` | Setting up repos, deploying, managing code |
 | Context Guardian | `~/.claude/skills/context-guardian-setup.md` | Preventing context death in long sessions |
 
@@ -213,8 +220,8 @@ Load these skills by referencing them in your prompts or CLAUDE.md:
 **Option 2 — Add to your CLAUDE.md:**
 Add the skill table above to your project's CLAUDE.md file. Claude will see it at the start of every session.
 
-**Option 3 — Use the growth plan template:**
-Copy `~/.claude/templates/growth-plan-template.html` to a new project folder and customize it. The skill file explains every slide.
+**Option 3, use the growth plan deck:**
+Everything lives in `~/.claude/templates/growth-plan-deck/`. Point Claude at its `SKILL.md` and it interviews you, then fills the deck in. `CUSTOMIZE.md` covers doing it by hand, and `docs/` explains the design system, why each slide exists, and the rules the deck is checked against.
 
 ## Context Guardian
 
@@ -260,7 +267,7 @@ echo "  3. Try a skill:"
 echo "     'Load ~/.claude/skills/100m-offer-builder.md and build an offer for my business'"
 echo ""
 echo "  4. Build a pitch deck:"
-echo "     cp ~/.claude/templates/growth-plan-template.html ./my-deck.html"
+echo "     cd ~/.claude/templates/growth-plan-deck && cat CUSTOMIZE.md"
 echo "     'Help me customize this deck for [prospect name]'"
 echo ""
 echo -e "${CYAN}  Join the community: https://www.skool.com/aisystems${NC}"
