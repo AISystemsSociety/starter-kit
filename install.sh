@@ -1,5 +1,5 @@
 #!/bin/bash
-# AI Systems Society — Starter Kit Installer
+# AI Systems Society Starter Kit Installer
 # Downloads all skills and sets up your Claude Code environment
 #
 # Usage: bash <(curl -s https://raw.githubusercontent.com/AISystemsSociety/starter-kit/main/install.sh)
@@ -16,7 +16,7 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 echo ""
-echo -e "${CYAN}${BOLD}AI Systems Society — Starter Kit${NC}"
+echo -e "${CYAN}${BOLD}AI Systems Society Starter Kit${NC}"
 echo -e "${CYAN}Setting up your Claude Code environment...${NC}"
 echo ""
 
@@ -96,7 +96,7 @@ if command -v gh &>/dev/null; then
     echo "    Choose: GitHub.com > HTTPS > Login with a web browser"
     echo ""
     echo -e "  ${CYAN}Don't have a GitHub account? Create one at: https://github.com/signup${NC}"
-    echo "  Use your business email. Pick a professional username — clients might see it."
+    echo "  Use your business email. Pick a professional username, clients might see it."
   fi
 fi
 
@@ -186,7 +186,7 @@ if [ ! -f "$SETTINGS_FILE" ]; then
   cp "$CG_TMP/settings-template.json" "$SETTINGS_FILE"
   echo "  → Created settings.json with Context Guardian hooks"
 else
-  echo -e "  → ${YELLOW}settings.json already exists — you need to merge hooks manually${NC}"
+  echo -e "  → ${YELLOW}settings.json already exists, merge the hooks manually${NC}"
   echo "    See: $SKILLS_DIR/context-guardian-setup.md"
 fi
 
@@ -197,7 +197,7 @@ echo -e "${GREEN}[4/5]${NC} Setting up CLAUDE.md snippet..."
 
 SNIPPET_FILE="$SKILLS_DIR/claude-md-snippet.md"
 cat > "$SNIPPET_FILE" << 'SNIPPET'
-# AI Systems Society — Skills
+# AI Systems Society Skills
 
 ## Available Skills
 
@@ -214,10 +214,10 @@ Load these skills by referencing them in your prompts or CLAUDE.md:
 
 ## How to Use Skills
 
-**Option 1 — Reference in your prompt:**
+**Option 1, reference it in your prompt:**
 "Load the skill at ~/.claude/skills/100m-offer-builder.md and run me through the offer builder for my business."
 
-**Option 2 — Add to your CLAUDE.md:**
+**Option 2, add it to your CLAUDE.md:**
 Add the skill table above to your project's CLAUDE.md file. Claude will see it at the start of every session.
 
 **Option 3, use the growth plan deck:**
@@ -227,7 +227,7 @@ Everything lives in `~/.claude/templates/growth-plan-deck/`. Point Claude at its
 
 Context Guardian prevents Claude Code from losing your work when the context window fills up. It's already installed. To activate:
 
-1. If you had no `settings.json` before, it's already configured — just restart Claude Code.
+1. If you had no `settings.json` before, it is already configured, just restart Claude Code.
 2. If you had an existing `settings.json`, merge the hooks from `~/.claude/skills/context-guardian-setup.md`.
 
 What it does:
